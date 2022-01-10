@@ -30,7 +30,8 @@ Route::get('/api',        'HomeController@api')->name('api');
 Route::get('/categorys', 'Web\CommandController@showCategorys');
 Route::get('/category/{category}', 'Web\CommandController@showNameCategory');
 Route::get('/commands', 'Web\CommandController@showCommands');
-Route::get('/commandsByCategory', 'Web\CommandController@showCommandByCategoria');
+Route::get('/command/{command}', 'Web\CommandController@showNameCommand');
+Route::get('/commandsByCategory/{category}', 'Web\CommandController@showCommandByCategoria');
 
 // RUTAS EXPORT DATA
 Route::get('export-category', 'Web\UploadFileController@exportCategorys')->name('export-category');
