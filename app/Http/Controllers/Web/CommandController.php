@@ -13,7 +13,7 @@ class CommandController extends GeneralController
     public function showCategorys()
     {
         try {
-            $result = Category::select('name')->get();
+            $result = Category::select('name')->paginate(20);
             if (count($result) > 0) {
                 return $this->sendResponse($result, 'List of categorys.');
             }else {
@@ -48,12 +48,13 @@ class CommandController extends GeneralController
             ->join('categorys', 'commands.category_id', '=', 'categorys.id')
             ->select('commands.command', 'commands.description', 'categorys.name as category')
             ->orderBy('categorys.id')
-            ->get();
-            if (count($result) > 0) {
-                return $this->sendResponse($result, 'List of commands.');
-            } else {
-                return $this->sendError('Error ', 'Error displaying commands!.');
-            }
+            ->paginate(20);
+            return $this->sendResponse($result, 'List of commands.');
+            // if (count($result) > 0) {
+            //     return $this->sendResponse($result, 'List of commands.');
+            // } else {
+            //     return $this->sendError('Error ', 'Error displaying commands!.');
+            // }
 
         } catch (\Throwable $th) {
             //throw $th;

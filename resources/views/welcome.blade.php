@@ -49,6 +49,11 @@
                                         <i class="mdi mdi-settings-outline d-md-none d-block"></i>
                                         <span class="d-none d-md-block">Commands</span>
                                     </a>
+                                    <a class="nav-link" id="v-pills-pagination-tab" data-toggle="pill" href="#v-pills-pagination" role="tab" aria-controls="v-pills-pagination"
+                                        aria-selected="false">
+                                        <i class="mdi mdi-settings-outline d-md-none d-block"></i>
+                                        <span class="d-none d-md-block">Pagination</span>
+                                    </a>
                                 </div>
                             </div>
 
@@ -159,6 +164,71 @@
                                                    <img src="{{ asset('img/bycategory.jpg') }}" class="img-fluid" alt="Schema command by category">
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="v-pills-pagination" role="tabpanel" aria-labelledby="v-pills-pagination-tab">
+                                        <h4>Info and Pagination</h4>
+                                        <p>The API will automatically paginate the responses. You will receive up to 20 documents per page.</p>
+                                        <p>Each resource contains an info object with information about the response.</p>
+                                        <table class="table table-bordered table-centered mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Key</th>
+                                                    <th>Type</th>
+                                                    <th>Description</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        current_page
+                                                    </td>
+                                                    <td>int</td>
+                                                    <td>Current page numbery</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        last_page
+                                                    </td>
+                                                    <td>int</td>
+                                                    <td>Last page number</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        last_page_url
+                                                    </td>
+                                                    <td>string (url)</td>
+                                                    <td>Link to the last page</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        next_page_url
+                                                    </td>
+                                                    <td>string (url)</td>
+                                                    <td>Link to the next page (if it exists)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        prev_page_url
+                                                    </td>
+                                                    <td>string (url)</td>
+                                                    <td>Link to the previous page (if it exists)
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4><strong>GET </strong> https://commands-linux.herokuapp.com/api/commands?page=2</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <p>
+                                                    You can access different pages with the page parameter. If you don't specify any page,
+                                                    the first page will be shown. For example, in order to access page 2, add ?page=2 to the end of the URL.
+                                                </p>
+                                                   <img src="{{ asset('img/pagination.jpg') }}" class="img-fluid" alt="Schema comando">
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
