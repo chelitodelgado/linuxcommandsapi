@@ -5,12 +5,12 @@
         <title>Log In | Kharma Solutions</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <link rel="shortcut icon" href="{{ secure_asset('favicon.jpg') }}">
 
         <!-- App css -->
-        <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets/css/app-modern.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
-        <link href="{{ asset('assets/css/app-modern-dark.min.css') }}" rel="stylesheet" type="text/css" id="dark-style" />
+        <link href="{{ secure_asset('/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ secure_asset('/assets/css/app-modern.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
+        <link href="{{ secure_asset('/assets/css/app-modern-dark.min.css') }}" rel="stylesheet" type="text/css" id="dark-style" />
 
     </head>
 
@@ -24,7 +24,7 @@
 
                             <div class="card-header pt-4 pb-4 text-center bg-primary">
                                 <a href="index.html">
-                                    <span><img src="{{ asset('assets/images/logo.png') }}" alt="" height="18"></span>
+                                    <span><img src="{{ secure_asset('favicon.jpg') }}" alt="" height="18"></span>
                                 </a>
                             </div>
 
@@ -92,8 +92,8 @@
         </footer>
 
         <!-- bundle -->
-        <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
-        <script src="{{ asset('assets/js/app.min.js') }}"></script>
+        <script src="{{ secure_asset('/assets/js/vendor.min.js') }}"></script>
+        <script src="{{ secure_asset('/assets/js/app.min.js') }}"></script>
 
     </body>
 </html>
