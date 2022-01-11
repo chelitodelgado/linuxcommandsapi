@@ -11,9 +11,8 @@
         <link rel="shortcut icon" href="{{ asset('favicon.jpg') }}">
 
         <!-- App css -->
-        <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="assets/css/app-modern.min.css" rel="stylesheet" type="text/css" id="light-style" />
-        <link href="{{ asset('/assets/css/app-modern.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
+        <link href="{{ secure_asset('/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ secure_asset('/assets/css/app-modern.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
 
     </head>
 
@@ -247,8 +246,8 @@
             2022 © Kharma Solutions - kharma-s.com
         </footer>
 
-        <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
-        <script src="{{ asset('assets/js/app.min.js') }}"></script>
+        <script src="{{ secure_asset('assets/js/vendor.min.js') }}"></script>
+        <script src="{{ secure_asset('assets/js/app.min.js') }}"></script>
     </body>
 
 </html>
