@@ -59,7 +59,9 @@ class CategoryController extends GeneralController
 
             if($validarUsuario) {
                 // $result = DB::table('categorys')->select('id', 'name', "date_format(created_at,'%Y-%m-%d) as fecha")->get();
-                $result = DB::table('categorys')->select('id', 'name', "created_at as fecha")->get();
+                $result = DB::table('categorys')
+                ->select('id', 'name', 'lang', "created_at as fecha")
+                ->get();
                 return $this->sendResponse($result, 'Edit command');
             }else {
                 return $this->sendError('Usuario no autorizado.', null);

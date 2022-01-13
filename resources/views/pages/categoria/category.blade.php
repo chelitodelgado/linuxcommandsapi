@@ -6,8 +6,9 @@
 @section('content')
 
 <style>
-    .scrolling{
-        height: 500px;
+    #export {
+        margin-left: 5px;
+        float: right;
     }
 </style>
 
@@ -32,52 +33,76 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-xl-6">
-                        <div class="form-group">
-                            <form method="POST" id="form_category" class="needs-validation" novalidate enctype="multipart/form-data">
-                                @csrf
+                    <div class="col-xl-12">
+                        <div class="row">
+                            <div class="col-xl-6">
                                 <div class="form-group">
-                                    <label for="mes">Selecciona mes</label>
-                                    <input type="text" class="form-control" id="name" name="name"
-                                        placeholder="Categoria" required>
+                                    <form method="POST" id="form_category" class="needs-validation" novalidate enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <div class="form-group">
+                                                    <label for="mes">Agregar categoria</label>
+                                                    <input type="text" class="form-control" id="name" name="name"
+                                                        placeholder="Categoria" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <div class="form-group">
+                                                    <label for="mes">Seleccionar lenguaje</label>
+                                                    <select name="lang" id="lang" class="form-control" required>
+                                                        <option>Seleccionar....</option>
+                                                        <option value="es">Espanol</option>
+                                                        <option value="en">Ingles</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <div class="form-group">
+                                                    <input type="hidden" id="id_category" name="id" value="">
+                                                    <input type="submit" id="guardar" class="btn btn-block btn-primary" value="Guardar">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
+                            </div>
+                            <div class="col-xl-6">
                                 <div class="form-group">
-                                    <input type="hidden" id="id_category" name="id" value="">
-                                    <input type="submit" id="guardar" class="btn btn-primary" value="Guardar">
+                                    <form method="POST" id="import_category" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col-xl-12">
+                                                <div class="form-group">
+                                                    <label for="mes">Selecciona el archivo</label>
+                                                    <input type="file" name="categorys" id="categorys" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <div class="form-group">
+                                                    <input type="hidden" id="id_category" name="id" value="">
+                                                    <input type="submit" id="importar" class="btn btn-block btn-success" value="Importar">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                            </form>
-                        </div>
-                        <hr>
-                        <div class="form-group">
-                            <form method="POST" id="import_category" enctype="multipart/form-data">
-                                @csrf
-                                <div class="form-group">
-                                    <label for="mes">Selecciona el archivo</label>
-                                    <input type="file" name="categorys" id="categorys" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="hidden" id="id_category" name="id" value="">
-                                    <input type="submit" id="importar" class="btn btn-success" value="Importar">
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-xl-6">
+                    <div class="col-xl-12">
                         <div class="table-responsive">
-                            <a href="{{ route('export-category') }}" class="btn btn-sm btn-success"> <i class="mdi mdi-file-download"></i> Descargar </a>
-                            <div class="scrolling">
-                                <table id="category_table" class="table table-centered table-borderless mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Categoria</th>
-                                            <th>Fecha de registro</th>
-                                            <th>Accion</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="table_category"></tbody>
-                                </table>
-                            </div>
+                            <a href="{{ route('export-category') }}" id="export" class="btn btn-sm btn-success"> <i class="mdi mdi-file-download"></i> Descargar </a>
+                            <table id="categoryTable" class="table dt-responsive nowrap w-100">
+                                <thead>
+                                    <tr>
+                                        <th>Categoria</th>
+                                        <th>Lenguaje</th>
+                                        <th>Fecha</th>
+                                        <th>Accion</th>
+                                    </tr>
+                                </thead>
+                            </table>
                         </div>
                     </div>
                 </div>

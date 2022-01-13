@@ -1,38 +1,43 @@
 (function ($) {
     'use strict';
 
-    const tablaCommands = () => {
-        $.ajax({
-            url: 'api/commands',
-            type: "POST",
-            method: "POST",
-            dataType: 'json',
-            data: {
-                'id_user': 1,
+    function tablaCommands() {
+        $("#commandsTable").DataTable({
+            processing: false,
+            serverSide: false,
+            language: {
+                url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
             },
-            success:function(response) {
-                var data = response.data;
-                var tbody = '';
-                for (let i = 0; i < data.length; i++) {
-                    tbody +=  '\
-                    <tr>\
-                        <td>'+(i+1)+'</td>\
-                        <td>'+data[i].category+'</td>\
-                        <td>'+data[i].command+'</td>\
-                        <td>'+data[i].description+'</td>\
-                        <td>'+data[i].fecha+'</td>\
-                        <td class="table-action">\
-                            <a id="'+data[i].id+'" class="edit action-icon"> <i class="mdi mdi-pencil"></i></a>\
-                            <a id="'+data[i].id+'" class="del action-icon"> <i class="mdi mdi-delete"></i></a>\
-                        </td>\
-                    </tr>';
-                    $('#table_command').html(tbody);
-                }
-
+            ajax: {
+                url: "api/commands",
+                type: "POST",
+                method: "POST",
+                dataType: 'json',
+                data: {
+                    'id_user': 1,
+                },
             },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.log('Error al encontrar datos', jqXHR);
-            }
+            columns:[
+                { data: "category"     },
+                { data: "command"      },
+                { data: "description"  },
+                { data: "lang"  },
+                { data: "fecha", "render": function (data) {
+                        var date = new Date(data);
+                        var month = date.getMonth() + 1;
+                        return (month.length > 1 ? month : "0" + month) + "/" + date.getDate() + "/" + date.getFullYear();
+                    }
+                },
+                { data: "id", render: function(data) {
+                    return `
+                        <div class="table-action">
+                            <a id="${data}" class="edit action-icon"> <i class="mdi mdi-pencil"></i></a>
+                            <a id="${data}" class="del action-icon"> <i class="mdi mdi-delete"></i></a>
+                        </div>
+                        `;
+                    }
+                },
+            ]
         });
     };
 
@@ -50,7 +55,7 @@
                 dataType: "json",
                 success:function(data){
                     $('#form_command')[0].reset();
-                    tablaCommands();
+                    $('#commandsTable').DataTable().ajax.reload();
                 },
 				error: function(jqXHR, textStatus, errorThrown) {
 				  console.log('Error agregar comando', jqXHR);
@@ -72,7 +77,7 @@
                     $('#guardar').removeClass("btn-info");
                     $('#guardar').addClass("btn-primary");
                     $('#guardar').val('Guardar');
-                    tablaCommands();
+                    $('#commandsTable').DataTable().ajax.reload();
                 },
 				error: function(jqXHR, textStatus, errorThrown) {
 				  console.log('Error actualizar categoria', jqXHR);
@@ -95,12 +100,21 @@
                 processData: false,
                 dataType: "json",
                 success:function(data){
-                    console.log(data);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Importacion exitosa.',
+                        text: 'La informacion se alamaceno con exito',
+                    });
                     $('#import_commands')[0].reset();
-                    tablaCommands();
+                    $('#commandsTable').DataTable().ajax.reload();
                     cifrasTotale();
                 },
 				error: function(jqXHR, textStatus, errorThrown) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error al importar',
+                        text: 'La informacion no fue alamacenada.',
+                    });
 				  console.log('Error al importar categorias', jqXHR);
 				}
             });
@@ -141,8 +155,7 @@
 			dataType: 'json',
             data: { 'id': categoria_id},
             success:function(data) {
-                console.log(data);
-                tablaCommands();
+                $('#commandsTable').DataTable().ajax.reload();
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log('Error al eliminar comando.', jqXHR);
@@ -150,7 +163,7 @@
         });
     });
 
-    const llenarSelect = () => {
+    function llenarSelect() {
         $.ajax({
             url: 'api/categorys',
             type: "POST",
@@ -175,10 +188,10 @@
         });
     }
 
-    const cifrasTotale = () => {
+    function cifrasTotale() {
         const categoriasTotales = document.querySelector('#total_categorias');
         const comandosTotales   = document.querySelector('#total_comandos');
-        const listCategorias    = document.querySelector('#listCategorys');
+        // const listCategorias    = document.querySelector('#listCategorys');
         fetch('api/cifrasTorales')
             .then( resp => resp.json())
             .then( data => {
@@ -186,14 +199,14 @@
                 const listTrue = data.data;
                 categoriasTotales.innerHTML = result.categoriasTotales;
                 comandosTotales.innerHTML = result.comandosTotales;
-                listCategorias.innerHTML = '';
-                listTrue.elementosCargados.forEach(item => {
-                    listCategorias.innerHTML += `
-                        <tr>
-                            <td>${item.name}</td>
-                        </tr>
-                    `;
-                });
+                // listCategorias.innerHTML = '';
+                // listTrue.elementosCargados.forEach(item => {
+                //     listCategorias.innerHTML += `
+                //         <tr>
+                //             <td>${item.name}</td>
+                //         </tr>
+                //     `;
+                // });
             })
     }
 

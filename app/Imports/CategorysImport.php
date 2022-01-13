@@ -14,6 +14,7 @@ class CategorysImport implements ToCollection
         {
             Category::create([
                 'name' => $row[0],
+                'lang' => $row[1],
             ]);
         }
     }

@@ -2,35 +2,41 @@
     'use strict';
 
     function tablaCategorys(){
-        $.ajax({
-            url: 'api/categorys',
-            type: "POST",
-            method: "POST",
-            dataType: 'json',
-            data: {
-                'id_user': 1,
+        $("#categoryTable").DataTable({
+            processing: false,
+            serverSide: false,
+            language: {
+                url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
             },
-            success:function(response) {
-                var data = response.data;
-                var tbody = '';
-                for (let i = 0; i < data.length; i++) {
-                    tbody +=  '\
-                    <tr>\
-                        <td>'+(i+1)+'</td>\
-                        <td>'+data[i].name+'</td>\
-                        <td>'+data[i].fecha+'</td>\
-                        <td class="table-action">\
-                            <a id="'+data[i].id+'" class="edit action-icon"> <i class="mdi mdi-pencil"></i></a>\
-                            <a id="'+data[i].id+'" class="del action-icon"> <i class="mdi mdi-delete"></i></a>\
-                        </td>\
-                    </tr>';
-                    $('#table_category').html(tbody);
+            ajax: {
+                url: "api/categorys",
+                type: "POST",
+                method: "POST",
+                dataType: 'json',
+                data: {
+                    'id_user': 1,
+                },
+            },
+            columns:[
+                { data: "name"  },
+                { data: "lang"  },
+                { data: "fecha",
+                "render": function (data) {
+                    var date = new Date(data);
+                    var month = date.getMonth() + 1;
+                    return (month.length > 1 ? month : "0" + month) + "/" + date.getDate() + "/" + date.getFullYear();
                 }
-
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.log('Error al encontrar datos', jqXHR);
-            }
+                },
+                { data: "id", render: function(data) {
+                    return `
+                        <div class="table-action">
+                            <a id="${data}" class="edit action-icon"> <i class="mdi mdi-pencil"></i></a>
+                            <a id="${data}" class="del action-icon"> <i class="mdi mdi-delete"></i></a>
+                        </div>
+                        `;
+                    }
+                },
+            ]
         });
     };
 
@@ -48,7 +54,7 @@
                 dataType: "json",
                 success:function(data){
                     $('#form_category')[0].reset();
-                    tablaCategorys();
+                    $('#categoryTable').DataTable().ajax.reload();
                 },
 				error: function(jqXHR, textStatus, errorThrown) {
 				  console.log('Error agregar categoria', jqXHR);
@@ -69,7 +75,7 @@
                     $('#guardar').removeClass("btn-info");
                     $('#guardar').addClass("btn-primary");
                     $('#guardar').val('Guardar');
-                    tablaCategorys();
+                    $('#categoryTable').DataTable().ajax.reload();
                 },
 				error: function(jqXHR, textStatus, errorThrown) {
 				  console.log('Error actualizar categoria', jqXHR);
@@ -92,11 +98,20 @@
                 processData: false,
                 dataType: "json",
                 success:function(data){
-                    console.log(data);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Importacion exitosa.',
+                        text: 'La informacion se alamaceno con exito',
+                    });
                     $('#import_category')[0].reset();
-                    tablaCategorys();
+                    $('#categoryTable').DataTable().ajax.reload();
                 },
 				error: function(jqXHR, textStatus, errorThrown) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error al importar',
+                        text: 'La informacion no fue alamacenada.',
+                      });
 				  console.log('Error al importar categorias', jqXHR);
 				}
             });
@@ -133,7 +148,7 @@
 			dataType: 'json',
             data: { 'id': categoria_id},
             success:function(data) {
-                tablaCategorys();
+                $('#categoryTable').DataTable().ajax.reload();
             },
             error: function(jqXHR, textStatus, errorThrown) {
               console.log('Error al editar categoria.', jqXHR);
@@ -142,5 +157,4 @@
     });
 
     tablaCategorys();
-
 })(jQuery);

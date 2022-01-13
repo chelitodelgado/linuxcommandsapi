@@ -16,6 +16,7 @@ class CommandsImport implements ToCollection
                 'command'     => $row[0],
                 'description' => $row[1],
                 'category_id' => $row[2],
+                'lang'        => $row[3]
             ]);
         }
     }

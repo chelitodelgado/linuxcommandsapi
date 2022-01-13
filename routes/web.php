@@ -27,12 +27,14 @@ Route::get('/usuarios',   'HomeController@usuarios')->name('usuarios');
 Route::get('/api',        'HomeController@api')->name('api');
 
 // RUTAS API WEB
-Route::get('/categorys', 'Web\CommandController@showCategorys');
-Route::get('/category/{category}', 'Web\CommandController@showNameCategory');
-Route::get('/commands', 'Web\CommandController@showCommands');
-Route::get('/command/{command}', 'Web\CommandController@showNameCommand');
-Route::get('/commandsByCategory/{category}', 'Web\CommandController@showCommandByCategoria');
+Route::get('/api/{lang}/categorys', 'Web\CommandController@showCategorys');
+Route::get('/api/{lang}/category/{category}', 'Web\CommandController@showNameCategory');
+Route::get('/api/{lang}/commands', 'Web\CommandController@showCommands');
+Route::get('/api/{lang}/command/{command}', 'Web\CommandController@showNameCommand');
+Route::get('/api/{lang}/commandsByCategory/{category}', 'Web\CommandController@showCommandByCategoria');
+Route::get('/api/{lang}/searchCommand/{description}', 'Web\CommandController@searchcommand');
 
 // RUTAS EXPORT DATA
 Route::get('export-category', 'Web\UploadFileController@exportCategorys')->name('export-category');
+Route::get('export-commands', 'Web\UploadFileController@exportCommands')->name('export-commands');
 Route::get('download-category', 'Web\UploadFileController@downloadPlantilla')->name('download-category');

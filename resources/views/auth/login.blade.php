@@ -5,12 +5,12 @@
         <title>Log In | Kharma Solutions</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- App favicon -->
-        <link rel="shortcut icon" href="{{ secure_asset('favicon.jpg') }}">
+        <link rel="shortcut icon" href="{{ asset('favicon.jpg') }}">
 
         <!-- App css -->
-        <link href="{{ secure_asset('/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ secure_asset('/assets/css/app-modern.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
-        <link href="{{ secure_asset('/assets/css/app-modern-dark.min.css') }}" rel="stylesheet" type="text/css" id="dark-style" />
+        <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/css/app-modern.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
+        {{-- <link href="{{ asset('assets/css/app-modern-dark.min.css') }}" rel="stylesheet" type="text/css" id="dark-style" /> --}}
 
     </head>
 
@@ -92,8 +92,8 @@
         </footer>
 
         <!-- bundle -->
-        <script src="{{ secure_asset('/assets/js/vendor.min.js') }}"></script>
-        <script src="{{ secure_asset('/assets/js/app.min.js') }}"></script>
+        <script src="{{ asset('assets/js/app.min.js') }}"></script>
+        <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
 
     </body>
 </html>

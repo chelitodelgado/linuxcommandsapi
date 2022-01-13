@@ -11,7 +11,7 @@ form.addEventListener('submit', function(event) {
 });
 
 const consultaApi = (termino) => {
-    fetch(termino)
+    fetch('api/'+termino)
     .then(resp => resp.json())
     .then( data => {
         console.log(data);

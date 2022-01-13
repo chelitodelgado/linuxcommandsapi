@@ -14,7 +14,8 @@ class Command extends Model
     protected $fillable = [
         'command',
         'description',
-        'category_id'
+        'category_id',
+        'lang'
     ];
 
     protected $hidden = [

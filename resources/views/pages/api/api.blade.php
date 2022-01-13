@@ -36,7 +36,7 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-xl-5">
+                    <div class="col-xl-6">
                         <div class="form-group">
                             <div class="accordion custom-accordion" id="custom-accordion-one">
                                 <div class="card mb-0">
@@ -45,7 +45,7 @@
                                             <a class="custom-accordion-title d-block py-1"
                                                 data-toggle="collapse" href="#collapseFour"
                                                 aria-expanded="true" aria-controls="collapseFour">
-                                                http://www.linuxcommansapi.com/categorys
+                                                <small>https://commandslinuxapi.herokuapp.com/api/{es | en}/categorys</small>
                                                 <i class="mdi mdi-chevron-down accordion-arrow"></i>
                                             </a>
                                         </h5>
@@ -65,7 +65,7 @@
                                             <a class="custom-accordion-title collapsed d-block py-1"
                                                 data-toggle="collapse" href="#collapseFive"
                                                 aria-expanded="false" aria-controls="collapseFive">
-                                                http://www.linuxcommansapi.com/categorys/{nombre de la categoria}
+                                                <small>https://commandslinuxapi.herokuapp.com/api/{es | en}/categorys/{nombre de la categoria}</small>
                                                 <i class="mdi mdi-chevron-down accordion-arrow"></i>
                                             </a>
                                         </h5>
@@ -84,7 +84,7 @@
                                             <a class="custom-accordion-title collapsed d-block py-1"
                                                 data-toggle="collapse" href="#collapseSix"
                                                 aria-expanded="false" aria-controls="collapseSix">
-                                                http://www.linuxcommansapi.com/commands
+                                                <small>https://commandslinuxapi.herokuapp.com/api/{es | en}/commands</small>
                                                 <i class="mdi mdi-chevron-down accordion-arrow"></i>
                                             </a>
                                         </h5>
@@ -102,7 +102,7 @@
                                             <a class="custom-accordion-title collapsed d-block py-1"
                                                 data-toggle="collapse" href="#collapseSeven"
                                                 aria-expanded="false" aria-controls="collapseSeven">
-                                                http://www.linuxcommansapi.com/commandsByCategory
+                                                <small>https://commandslinuxapi.herokuapp.com/api/{es | en}/commandsByCategory</small>
                                                 <i class="mdi mdi-chevron-down accordion-arrow"></i>
                                             </a>
                                         </h5>
@@ -123,7 +123,7 @@
                                     <label>API</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1">http://www.linuxcommansapi.com/</span>
+                                            <span class="input-group-text" id="basic-addon1">https://commandslinuxapi.herokuapp.com/api/{es | en}</span>
                                         </div>
                                         <input type="text" class="form-control" name="api" id="api"
                                             placeholder="api"
@@ -136,7 +136,7 @@
                             </form>
                         </div>
                     </div>
-                    <div class="col-xl-7">
+                    <div class="col-xl-6">
                         <pre id="result"></pre>
                     </div>
                 </div>

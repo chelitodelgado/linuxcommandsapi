@@ -65,7 +65,7 @@ class CommandController extends GeneralController
             if($validarUsuario) {
                 $result = DB::table('commands')
                 ->join('categorys', 'categorys.id', '=', 'commands.category_id')
-                ->select('commands.id', 'commands.command', 'commands.description', 'commands.created_at as fecha', 'categorys.name as category')
+                ->select('commands.id', 'commands.command', 'commands.description', 'commands.lang','commands.created_at as fecha', 'categorys.name as category')
                 ->get();
                 return $this->sendResponse($result, 'Mostrar comandos');
             }else {
