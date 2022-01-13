@@ -5,26 +5,26 @@
         <title>API-Linux | @yield('title')</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- App favicon -->
-        <link rel="shortcut icon" href="{{ asset('favicon.jpg') }}">
+        <link rel="shortcut icon" href="{{ secure_asset('favicon.jpg') }}">
 
         <!-- App css -->
-        <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets/css/app-modern.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
-        <link href="{{ asset('assets/css/app-modern-dark.min.css') }}" rel="stylesheet" type="text/css" id="dark-style" />
+        <link href="{{ secure_asset('/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ secure_asset('/assets/css/app-modern.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
+        <link href="{{ secure_asset('/assets/css/app-modern-dark.min.css') }}" rel="stylesheet" type="text/css" id="dark-style" />
 
         <!-- Plugins -->
-        <script src="{{ asset('assets/js/jquery-3.6.0.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/chartJs/Chart.min.js') }}" type="text/javascript"></script>
-        <link  href="{{ asset('assets/plugins/chartJs/Chart.min.css') }}" rel="stylesheet" type="text/css" />
+        <script src="{{ secure_asset('/assets/js/jquery-3.6.0.js') }}" type="text/javascript"></script>
+        <script src="{{ secure_asset('/assets/plugins/chartJs/Chart.min.js') }}" type="text/javascript"></script>
+        <link  href="{{ secure_asset('/assets/plugins/chartJs/Chart.min.css') }}" rel="stylesheet" type="text/css" />
 
         {{-- DataTable --}}
-        <link href="{{ asset('assets/css/vendor/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets/css/vendor/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ secure_asset('/assets/css/vendor/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ secure_asset('/assets/css/vendor/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
 
-        <script src="{{ asset('assets/js/vendor/jquery.dataTables.min.js') }}"></script>
-        <script src="{{ asset('assets/js/vendor/dataTables.bootstrap4.js') }}"></script>
-        <script src="{{ asset('assets/js/vendor/dataTables.responsive.min.js') }}"></script>
-        <script src="{{ asset('assets/js/vendor/responsive.bootstrap4.min.js') }}"></script>
+        <script src="{{ secure_asset('/assets/js/vendor/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ secure_asset('/assets/js/vendor/dataTables.bootstrap4.js') }}"></script>
+        <script src="{{ secure_asset('/assets/js/vendor/dataTables.responsive.min.js') }}"></script>
+        <script src="{{ secure_asset('/assets/js/vendor/responsive.bootstrap4.min.js') }}"></script>
         {{-- <script src="{{ asset('assets/js/pages/demo.datatable-init.js') }}"></script> --}}
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -262,9 +262,9 @@
             </div>
         </div>
 
-        <script src="{{ asset('assets/js/jquery-3.6.0.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/js/vendor.min.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/js/app.min.js') }}" type="text/javascript"></script>
+        <script src="{{ secure_asset('/assets/js/jquery-3.6.0.js') }}" type="text/javascript"></script>
+        <script src="{{ secure_asset('/assets/js/vendor.min.js') }}" type="text/javascript"></script>
+        <script src="{{ secure_asset('/assets/js/app.min.js') }}" type="text/javascript"></script>
 
     </body>
 </html>

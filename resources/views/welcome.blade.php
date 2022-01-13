@@ -8,11 +8,11 @@
         <meta content="Linux Commands Api is an api with more than 300 commands categorized by system functionality." name="description" />
         <meta content="chelitodelgado" name="author" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="{{ asset('favicon.jpg') }}">
+        <link rel="shortcut icon" href="{{ secure_asset('favicon.jpg') }}">
 
         <!-- App css -->
-        <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets/css/app-modern.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
+        <link href="{{ secure_asset('/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ secure_asset('/assets/css/app-modern.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
 
     </head>
 
@@ -246,8 +246,8 @@
             2022 © Kharma Solutions - kharma-s.com
         </footer>
 
-        <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
-        <script src="{{ asset('assets/js/app.min.js') }}"></script>
+        <script src="{{ secure_asset('/assets/js/vendor.min.js') }}"></script>
+        <script src="{{ secure_asset('/assets/js/app.min.js') }}"></script>
     </body>
 
 </html>
