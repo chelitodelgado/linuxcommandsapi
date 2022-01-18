@@ -13,7 +13,7 @@ class CommandController extends GeneralController
     public function showCategorys($lang)
     {
         try {
-            $result = Category::select('name')
+            $result = Category::select('id', 'name')
             ->where('lang', '=', $lang)->get();
             if (count($result) > 0) {
                 $retVal = ($lang == 'en') ? 'List of categorys.' : 'Lista de categorias' ;
@@ -32,7 +32,7 @@ class CommandController extends GeneralController
     public function showNameCategory($lang, $category) {
         try {
             // $result = Category::orWhere('name', 'like', '%' ,$name, '%')->get();
-            $result = Category::where('name', 'like', '%'.$category.'%')
+            $result = Category::where('id', 'name', 'like', '%'.$category.'%')
             ->select('name')
             ->where('lang', '=', $lang)
             ->get();
@@ -103,7 +103,7 @@ class CommandController extends GeneralController
 
             $result = DB::table('commands')
             ->join('categorys', 'commands.category_id', '=', 'categorys.id')
-            ->select('commands.command', 'commands.description', 'categorys.name as category')
+            ->select('commands.id','commands.command', 'commands.description', 'categorys.name as category')
             ->where('categorys.name', 'like', $category.'%')
             ->where('commands.lang', '=', $lang)
             ->get();
