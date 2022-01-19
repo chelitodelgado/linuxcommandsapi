@@ -65,10 +65,13 @@
                                             This documentation will help you become familiar with the Linux Commands API resources
                                             and will show you how to perform different queries, so that you can get the most out of it.
                                         </p>
-                                        <h4>Base: <code>https://commands-linux.herokuapp.com/v1/</code> </h4>
+                                        <h4>Base: <code>https://commandslinuxapi.herokuapp.com/api/{es|en}</code> </h4>
                                         <p>
                                             The base URL contains the documentation on all available API resources. All requests are GET
                                             requests and go through https. All responses will return data in json.
+                                        </p>
+                                        <p>
+                                            You can change the language to Spanish and English where es = Spanish and en = English
                                         </p>
                                         <h4>Command schema</h4>
                                         <table class="table table-bordered table-centered mb-0">
@@ -114,9 +117,13 @@
                                     <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                                         <h4>Get all category</h4>
                                         <p>Show list of all available categories.</p>
+                                        <p>
+                                            You can change the language to Spanish and English where es = Spanish and en = English
+                                        </p>
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4><strong>GET </strong> https://commands-linux.herokuapp.com/v1/categorys </h4>
+                                                <h4><strong>GET </strong> https://commandslinuxapi.herokuapp.com/api/{es|en}/categorys </h4>
+                                                <h5><strong>Example: </strong> https://commandslinuxapi.herokuapp.com/api/en/categorys </h5>
                                             </div>
                                             <div class="card-body">
                                                    <img src="{{ asset('img/category.jpg') }}" class="img-fluid" alt="Schema categorys">
@@ -126,7 +133,8 @@
                                         <p>Filter by category to search.</p>
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4><strong>GET </strong> https://commands-linux.herokuapp.com/v1/category/{information of system} </h4>
+                                                <h4><strong>GET </strong> https://commandslinuxapi.herokuapp.com/api/{es|en}/category/{category} </h4>
+                                                <h5><strong>Example </strong> https://commandslinuxapi.herokuapp.com/api/en/category/system information </h5>
                                             </div>
                                             <div class="card-body">
                                                 <img src="{{ asset('img/categoryuno.jpg') }}" class="img-fluid" alt="Schema category">
@@ -136,9 +144,13 @@
                                     <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                                         <h4>Get all commands</h4>
                                         <p>Show list of all available commands.</p>
+                                        <p>
+                                            You can change the language to Spanish and English where es = Spanish and en = English
+                                        </p>
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4><strong>GET </strong> https://commands-linux.herokuapp.com/v1/commands </h4>
+                                                <h4><strong>GET </strong> https://commands-linux.herokuapp.com/api/{es|en}/commands </h4>
+                                                <h5><strong>Example </strong> https://commands-linux.herokuapp.com/api/es/commands </h5>
                                             </div>
                                             <div class="card-body">
                                                    <img src="{{ asset('img/comando.jpg') }}" class="img-fluid" alt="Schema comando">
@@ -148,7 +160,8 @@
                                         <p>Filter by command to search.</p>
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4><strong>GET </strong> https://commands-linux.herokuapp.com/v1/command/{ls} </h4>
+                                                <h4><strong>GET </strong> https://commands-linux.herokuapp.com/api/{es|en}/command/{command} </h4>
+                                                <h4><strong>Example </strong> https://commands-linux.herokuapp.com/api/es/command/ls </h4>
                                             </div>
                                             <div class="card-body">
                                                    <img src="{{ asset('img/uncomando.jpg') }}" class="img-fluid" alt="Schema comando">
@@ -158,7 +171,8 @@
                                         <p>Filter commands by category</p>
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4><strong>GET </strong> https://commands-linux.herokuapp.com/v1/commandsByCategory/{informacion del sistema} </h4>
+                                                <h4><strong>GET </strong> https://commands-linux.herokuapp.com/api/{es|en}/commandsByCategory/{category} </h4>
+                                                <h5><strong>Example </strong> https://commands-linux.herokuapp.com/api/es/commandsByCategory/informacion del sistema </h5>
                                             </div>
                                             <div class="card-body">
                                                    <img src="{{ asset('img/bycategory.jpg') }}" class="img-fluid" alt="Schema command by category">
@@ -169,6 +183,9 @@
                                         <h4>Info and Pagination</h4>
                                         <p>The API will automatically paginate the responses. You will receive up to 20 documents per page.</p>
                                         <p>Each resource contains an info object with information about the response.</p>
+                                        <p>
+                                            You can change the language to Spanish and English where es = Spanish and en = English
+                                        </p>
                                         <table class="table table-bordered table-centered mb-0">
                                             <thead>
                                                 <tr>
@@ -218,12 +235,15 @@
                                         </table>
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4><strong>GET </strong> https://commands-linux.herokuapp.com/api/commands?page=2</h4>
+                                                <h4><strong>GET </strong> https://commandslinuxapi.herokuapp.com/api/{es|en}/commands?page=2</h4>
                                             </div>
                                             <div class="card-body">
                                                 <p>
                                                     You can access different pages with the page parameter. If you don't specify any page,
                                                     the first page will be shown. For example, in order to access page 2, add ?page=2 to the end of the URL.
+                                                </p>
+                                                <p>
+                                                    You can change the language to Spanish and English where es = Spanish and en = English
                                                 </p>
                                                    <img src="{{ asset('img/pagination.jpg') }}" class="img-fluid" alt="Schema comando">
                                             </div>

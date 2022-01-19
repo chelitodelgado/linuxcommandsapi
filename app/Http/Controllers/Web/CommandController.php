@@ -13,7 +13,7 @@ class CommandController extends GeneralController
     public function showCategorys($lang)
     {
         try {
-            $result = Category::select('id', 'name')
+            $result = Category::select('id', 'name', 'ico')
             ->where('lang', '=', $lang)->orderBy('id', 'desc') ->get();
             if (count($result) > 0) {
                 $retVal = ($lang == 'en') ? 'List of categorys.' : 'Lista de categorias' ;
