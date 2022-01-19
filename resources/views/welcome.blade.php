@@ -149,8 +149,8 @@
                                         </p>
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4><strong>GET </strong> https://commands-linux.herokuapp.com/api/{es|en}/commands </h4>
-                                                <h5><strong>Example </strong> https://commands-linux.herokuapp.com/api/es/commands </h5>
+                                                <h4><strong>GET </strong> https://commandslinuxapi.herokuapp.com/api/{es|en}/commands </h4>
+                                                <h5><strong>Example </strong> https://commandslinuxapi.herokuapp.com/api/es/commands </h5>
                                             </div>
                                             <div class="card-body">
                                                    <img src="{{ asset('img/comando.jpg') }}" class="img-fluid" alt="Schema comando">
@@ -160,8 +160,8 @@
                                         <p>Filter by command to search.</p>
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4><strong>GET </strong> https://commands-linux.herokuapp.com/api/{es|en}/command/{command} </h4>
-                                                <h4><strong>Example </strong> https://commands-linux.herokuapp.com/api/es/command/ls </h4>
+                                                <h4><strong>GET </strong> https://commandslinuxapi.herokuapp.com/api/{es|en}/command/{command} </h4>
+                                                <h4><strong>Example </strong> https://commandslinuxapi.herokuapp.com/api/es/command/ls </h4>
                                             </div>
                                             <div class="card-body">
                                                    <img src="{{ asset('img/uncomando.jpg') }}" class="img-fluid" alt="Schema comando">
@@ -171,8 +171,8 @@
                                         <p>Filter commands by category</p>
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4><strong>GET </strong> https://commands-linux.herokuapp.com/api/{es|en}/commandsByCategory/{category} </h4>
-                                                <h5><strong>Example </strong> https://commands-linux.herokuapp.com/api/es/commandsByCategory/informacion del sistema </h5>
+                                                <h4><strong>GET </strong> https://commandslinuxapi.herokuapp.com/api/{es|en}/commandsByCategory/{category} </h4>
+                                                <h5><strong>Example </strong> https://commandslinuxapi.herokuapp.com/api/es/commandsByCategory/informacion del sistema </h5>
                                             </div>
                                             <div class="card-body">
                                                    <img src="{{ asset('img/bycategory.jpg') }}" class="img-fluid" alt="Schema command by category">
