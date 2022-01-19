@@ -11,7 +11,7 @@ class Category extends Model
 
     protected $table = 'categorys';
 
-    protected $fillable = [ 'name', 'lang' ];
+    protected $fillable = [ 'name', 'lang', 'ico' ];
 
     protected $hidden = [
         'created_at', 'updated_at'

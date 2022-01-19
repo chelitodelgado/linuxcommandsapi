@@ -88,6 +88,35 @@
                                     </form>
                                 </div>
                             </div>
+                            <div class="col-xl-12">
+                                <div class="form-group">
+                                    <form method="POST" id="import_image_category" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <div class="form-group">
+                                                    <label for="ico">Importar imagenes a categorias</label>
+                                                    <input type="text" name="image" id="image" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <div class="form-group">
+                                                    <label for="mes">Seleccionar categoria</label>
+                                                    <select name="id_categorys" id="id_categorys" class="form-control">
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-12">
+                                                <div class="form-group">
+                                                    <input type="hidden" id="id_category" name="id" value="">
+                                                    <input type="submit" id="agregar" class="btn btn-warning" value="Agregar">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-xl-12">
@@ -96,6 +125,7 @@
                             <table id="categoryTable" class="table dt-responsive nowrap w-100">
                                 <thead>
                                     <tr>
+                                        <th>Icono</th>
                                         <th>Categoria</th>
                                         <th>Lenguaje</th>
                                         <th>Fecha</th>

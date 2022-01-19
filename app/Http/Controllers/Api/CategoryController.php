@@ -60,7 +60,7 @@ class CategoryController extends GeneralController
             if($validarUsuario) {
                 // $result = DB::table('categorys')->select('id', 'name', "date_format(created_at,'%Y-%m-%d) as fecha")->get();
                 $result = DB::table('categorys')
-                ->select('id', 'name', 'lang', "created_at as fecha")
+                ->select('id', 'name', 'lang', "ico", "created_at as fecha")
                 ->get();
                 return $this->sendResponse($result, 'Edit command');
             }else {
@@ -116,5 +116,24 @@ class CategoryController extends GeneralController
         $result = Excel::import(new CategorysImport, request()->file('categorys'));
 
         return $this->sendResponse($result, 'Update category');
+    }
+
+    public function imagenImport(Request $request)
+    {
+
+        try {
+            $validatedData = $request->validate([
+                'image' => 'required|string|max:255',
+            ]);
+            $form_data = array(
+                'ico' => $validatedData['image'],
+            );
+
+            $result = Category::whereId($request->id_categorys)->update($form_data);
+            return $this->sendResponse($result, 'Update ico to category');
+        } catch (\Throwable $th) {
+            //throw $th;
+            return $this->sendError('Category update error', 'Error to update ico to category');
+        }
     }
 }

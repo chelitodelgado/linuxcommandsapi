@@ -16,6 +16,7 @@ Route::post('/categoryEdit', 'Api\CategoryController@edit');
 Route::post('/categoryUpdate', 'Api\CategoryController@update');
 Route::post('/categoryImport', 'Api\CategoryController@categoryImport');
 Route::post('/categoryDestroy', 'Api\CategoryController@destroy');
+Route::post('/imagenImport', 'Api\CategoryController@imagenImport');
 
 // Administracion comandos
 Route::post('/commands', 'Api\CommandController@show');

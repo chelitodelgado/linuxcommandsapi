@@ -18,6 +18,9 @@
                 },
             },
             columns:[
+                { data: "ico", render: function(data) {
+                    return `<img src="${data}" width="32">`;
+                }},
                 { data: "name"  },
                 { data: "lang"  },
                 { data: "fecha",
@@ -118,6 +121,39 @@
         }
     });
 
+    $('#import_image_category').on('submit', function(event) {
+        event.preventDefault();
+
+        if($('#agregar').val() == 'Agregar') {
+            $.ajax({
+                url: 'api/imagenImport',
+                method:"POST",
+                data: new FormData(this),
+                contentType: false,
+                cache: false,
+                processData: false,
+                dataType: "json",
+                success:function(data){
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Se agrego imagen con exito.',
+                        text: 'La imagen se alamaceno con exito',
+                    });
+                    $('#import_image_category')[0].reset();
+                    $('#categoryTable').DataTable().ajax.reload();
+                },
+				error: function(jqXHR, textStatus, errorThrown) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error al importar',
+                        text: 'La informacion no fue alamacenada.',
+                      });
+				  console.log('Error al importar icono de categorias', jqXHR);
+				}
+            });
+        }
+    });
+
     $(document).on('click', '.edit', function(){
         var categoria_id = $(this).attr('id');
         $.ajax({
@@ -156,5 +192,31 @@
         });
     });
 
+    function llenarSelect() {
+        $.ajax({
+            url: 'api/categorys',
+            type: "POST",
+            method: "POST",
+            dataType: 'json',
+            data: {
+                'id_user': 1,
+            },
+            success:function(response) {
+                var data = response.data;
+                var option = '';
+                option +=  '<option>Seleccionar...</option>';
+                for (let i = 0; i < data.length; i++) {
+                    option +=  '<option value="'+data[i].id+'">'+data[i].name+'</option>';
+                    $('#id_categorys').html(option);
+                }
+
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log('Error al encontrar datos', jqXHR);
+            }
+        });
+    }
+
     tablaCategorys();
+    llenarSelect()
 })(jQuery);

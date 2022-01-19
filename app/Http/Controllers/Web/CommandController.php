@@ -14,7 +14,7 @@ class CommandController extends GeneralController
     {
         try {
             $result = Category::select('id', 'name')
-            ->where('lang', '=', $lang)->get();
+            ->where('lang', '=', $lang)->orderBy('id', 'desc') ->get();
             if (count($result) > 0) {
                 $retVal = ($lang == 'en') ? 'List of categorys.' : 'Lista de categorias' ;
                 return $this->sendResponse($result, $retVal);
